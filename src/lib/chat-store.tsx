@@ -48,7 +48,7 @@ export function ChatStoreProvider({ children }: { children: ReactNode }) {
 
   // Load the webhook URL on the client only (env var wins over stored value).
   useEffect(() => {
-    const fromEnv = import.meta.env.VITE_N8N_WEBHOOK_URL as string | undefined;
+    const fromEnv = import.meta.env["VITE_N8N_WEBHOOK_URL"] as string | undefined;
     if (fromEnv) {
       setWebhookUrl(fromEnv);
       return;
