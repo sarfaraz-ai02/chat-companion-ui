@@ -55,7 +55,9 @@ export function ChatStoreProvider({ children }: { children: ReactNode }) {
       setWebhookUrl(fromEnv);
       return;
     }
-    setWebhookUrl(window.localStorage.getItem(WEBHOOK_STORAGE_KEY) ?? "");
+    setWebhookUrl(
+      window.localStorage.getItem(WEBHOOK_STORAGE_KEY) ?? DEFAULT_WEBHOOK_URL
+    );
   }, []);
 
   const saveWebhookUrl = useCallback((url: string) => {
