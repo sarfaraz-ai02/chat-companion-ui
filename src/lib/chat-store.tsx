@@ -23,6 +23,8 @@ export type Thread = {
 };
 
 const WEBHOOK_STORAGE_KEY = "n8n-webhook-url";
+const DEFAULT_WEBHOOK_URL =
+  "https://ahmedevidenceos.app.n8n.cloud/webhook/48fec864-337d-412c-8e7b-e46b28bcf777";
 
 type ChatStore = {
   threads: Thread[];
@@ -53,7 +55,9 @@ export function ChatStoreProvider({ children }: { children: ReactNode }) {
       setWebhookUrl(fromEnv);
       return;
     }
-    setWebhookUrl(window.localStorage.getItem(WEBHOOK_STORAGE_KEY) ?? "");
+    setWebhookUrl(
+      window.localStorage.getItem(WEBHOOK_STORAGE_KEY) ?? DEFAULT_WEBHOOK_URL
+    );
   }, []);
 
   const saveWebhookUrl = useCallback((url: string) => {
